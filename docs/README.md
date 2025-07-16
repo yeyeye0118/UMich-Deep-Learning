@@ -9,8 +9,3 @@
 print("Hello, Docsify!")
 ```
 
----
-
-## 💬 留言区
-
-<div id="tcomment"></div>

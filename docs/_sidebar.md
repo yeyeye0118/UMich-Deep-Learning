@@ -1,2 +1,4 @@
 * [首页](README.md)
-* [第一章 示例](chapter1.md)
+* [lecture1](lecture1.md)
+
+* [lecture2](lecture2)
