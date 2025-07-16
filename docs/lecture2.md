@@ -84,4 +84,4 @@ L1 尖锐且鲁棒，L2 平均且平滑，易受局部影响
 > **In practice**. In practice, people prefer to avoid cross-validation in favor of having a single validation split, since cross-validation can be computationally expensive. The splits people tend to use is between 50%-90% of the training data for training and rest for validation. However, this depends on multiple factors: For example if the number of hyperparameters is large you may prefer to use bigger validation splits. If the number of examples in the validation set is small (perhaps only a few hundred or so), it is safer to use cross-validation. Typical number of folds you can see in practice would be 3-fold, 5-fold or 10-fold cross-validation.
 > 在实践中。在实践中，人们更愿意避免交叉验证，而倾向于使用单个验证拆分，因为交叉验证的计算成本可能很高。人们倾向于使用的 splits 是 50%-90% 的训练数据用于训练，其余部分用于验证。但是，这取决于多个因素：例如，如果超参数的数量很大，您可能更喜欢使用更大的验证拆分。如果验证集中的示例数量很少（可能只有几百个左右），则使用交叉验证会更安全。您在实践中可以看到的典型折叠数是 3 倍、5 倍或 10 倍交叉验证。
 
-![img](https://cs231n.github.io/assets/crossval.jpeg)
+![image-20250716234832026](C:\Users\17737\AppData\Roaming\Typora\typora-user-images\image-20250716234832026.png)
