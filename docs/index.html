@@ -16,37 +16,50 @@
   
   <!-- 搜索插件 -->
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-  
-  <!-- 自定义样式：去除目录下划线、高亮、箭头旋转 -->
+
+  <!-- 自定义样式 -->
   <style>
-    /* 去除下划线 */
+    /* 去除目录下划线 + 悬停高亮 */
     .sidebar ul li a {
       text-decoration: none !important;
+      color: #333 !important;
+      font-size: 15px;
+      line-height: 1.8em;
+      padding-left: 8px;
+      display: block;
     }
 
-    /* 悬停高亮颜色 */
+    /* 一级标题加粗 */
+    .sidebar ul li > a {
+      font-weight: bold;
+    }
+
+    /* 悬停时变色 */
     .sidebar ul li a:hover {
       color: #42b983 !important;
     }
 
-    /* 箭头图标样式 */
-    .app-sub-sidebar:before {
-      content: '';
+    /* 子菜单不加粗 */
+    .sidebar ul li ul a {
+      font-weight: normal;
     }
 
+    /* 目录项箭头样式 */
     .sidebar ul li > a:before {
-      content: '▶';
+      content: '>';
       display: inline-block;
       width: 1em;
       margin-left: -1em;
+      margin-right: 0.2em;
       transition: transform 0.2s ease;
+      color: #999;
     }
 
     .sidebar ul li.open > a:before {
       transform: rotate(90deg);
     }
 
-    /* 防止箭头显示在二级菜单中 */
+    /* 防止子目录项也出现箭头 */
     .sidebar ul li ul a:before {
       content: '';
       display: none;
@@ -72,7 +85,6 @@
       },
 
       katex: {
-        // 启用 KaTeX 自动渲染
         delimiters: 'dollars'
       }
     }
