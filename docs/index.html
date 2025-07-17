@@ -4,23 +4,18 @@
   <meta charset="UTF-8">
   <title>My Notes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- 引入 Docsify Vue 主题样式 -->
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
 
-  <!-- 引入 KaTeX 数学公式样式和库，用于渲染 $$ 数学公式 $$ -->
+  <!-- 引入 KaTeX 数学公式样式 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
-  <!-- 内容渲染挂载点 -->
-  <script src="//unpkg.com/docsify/lib/plugins/math.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
 
   <!-- 引入 Google 的 Noto Sans SC 字体，适合中文阅读 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
 
   <style>
     /* ===== 自定义侧边栏样式部分 ===== */
-
-    /* 设置整个侧边栏的字体、字号、行高、内边距和颜色 */
     .sidebar {
       font-family: "Noto Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
       font-size: 17px;
@@ -29,50 +24,41 @@
       color: #2c3e50;
     }
 
-    /* 顶部标题样式加粗并加大字体 */
     .sidebar .app-name {
       font-weight: bold;
       font-size: 18px;
     }
 
-    /* 去除链接的下划线 */
     .sidebar-nav a {
       text-decoration: none !important;
     }
 
-    /* 鼠标悬停时高亮颜色 */
     .sidebar-nav a:hover {
       color: #42b983;
     }
 
-    /* 当前激活（展开）项的字体加粗并高亮 */
     .sidebar-nav li.active > a {
       color: #42b983;
       font-weight: bold;
     }
 
-    /* 子目录的缩进 */
     .sidebar-nav ul {
       padding-left: 10px;
     }
 
-    /* 目录项移除默认列表样式，启用相对定位 */
     .sidebar-nav li {
       list-style: none;
       position: relative;
     }
 
-    /* 默认隐藏子目录 */
     .sidebar-nav li > ul {
       display: none;
     }
 
-    /* 展开时显示子目录 */
     .sidebar-nav li.active > ul {
       display: block;
     }
 
-    /* 为可折叠项添加箭头标识 */
     .sidebar-nav li.collapsible > a:before {
       content: ">";
       font-size: 10px;
@@ -83,7 +69,6 @@
       transition: transform 0.2s;
     }
 
-    /* 展开时箭头旋转指向下方 */
     .sidebar-nav li.collapsible.active > a:before {
       transform: translateY(-50%) rotate(90deg);
     }
@@ -91,72 +76,36 @@
 </head>
 <body>
 
-  <!-- Docsify 的渲染挂载点 -->
+  <!-- Docsify 渲染挂载点 -->
   <div id="app"></div>
 
   <script>
     window.$docsify = {
-    name: 'yeyeye的在线笔记',
-    repo: 'https://github.com/yeyeye0118/UMich_DLfCV',
-    loadSidebar: true,
-    subMaxLevel: 3,
-    toc: {
-      tocMaxLevel: 3,
-      target: 'h1, h2, h3'
-    },
-    plugins: [
-      function (hook, vm) {
-        hook.doneEach(function () {
-          setTimeout(() => {
-            const items = document.querySelectorAll('.sidebar-nav li');
-            items.forEach(item => {
-              const subList = item.querySelector('ul');
-              const link = item.querySelector('a');
-
-              if (subList && link) {
-                item.classList.add('collapsible');
-
-                // 防止重复绑定事件
-                if (!link.dataset.bound) {
-                  link.dataset.bound = 'true';
-                  link.addEventListener('click', function (e) {
-                    if (e.target === link) {
-                      e.preventDefault();
-                      item.classList.toggle('active');
-                    }
-                  });
-                }
-              }
-            });
-          }, 0); // 等待 DOM 渲染完成
-        });
+      name: 'yeyeye的在线笔记',
+      repo: 'https://github.com/yeyeye0118/UMich_DLfCV',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      toc: {
+        tocMaxLevel: 3,
+        target: 'h1, h2, h3'
+      },
+      markdown: {
+        smartypants: true
       }
-    ]
-  };
+    };
   </script>
 
-  <!-- 引入 Docsify 主库 -->
+  <!-- 引入 Docsify 本体 -->
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 
-  <!-- 搜索插件（默认搜索 markdown 中的内容） -->
-  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <!-- 引入 KaTeX 数学公式渲染库 -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
 
-  <!-- 数学公式插件（与 KaTeX 一起使用） -->
+  <!-- 引入 Docsify 的数学插件 -->
   <script src="//unpkg.com/docsify/lib/plugins/math.min.js"></script>
 
+  <!-- 搜索插件 -->
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 
-
-  
-
-  <!-- Twikoo 评论系统（可选，如果不使用评论功能可以移除） -->
-  <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.27/dist/twikoo.all.min.js"></script>
-  <script>
-    // 初始化 Twikoo 评论系统（请替换 envId）
-    twikoo.init({
-      envId: 'https://twikoo-你的用户名.vercel.app', // 替换为你的 Twikoo 配置地址
-      el: '#tcomment',
-      lang: 'zh-CN'
-    });
-  </script>
 </body>
 </html>
