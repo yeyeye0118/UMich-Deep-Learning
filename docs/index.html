@@ -4,43 +4,97 @@
   <meta charset="UTF-8">
   <title>My Notes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 引入 Docsify 的 Vue 主题样式 -->
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <style>
-    .page_toc {
-      position: fixed;
-      right: 20px;
-      top: 80px;
-      max-height: 70vh;
-      overflow-y: auto;
-      border-left: 2px solid #eee;
+    /* 
+      侧边栏折叠箭头及层级样式：
+      .sidebar-nav ul                // 子菜单缩进
+      .sidebar-nav li                // 去除默认列表样式，设置相对定位
+      .sidebar-nav li > ul           // 默认隐藏子菜单
+      .sidebar-nav li.active > ul    // 激活时显示子菜单
+      .sidebar-nav li.collapsible > a:before           // 可折叠项添加箭头
+      .sidebar-nav li.collapsible.active > a:before    // 激活时箭头旋转
+    */
+    .sidebar-nav ul {
       padding-left: 10px;
-      font-size: 14px;
-      background: #f9f9f9;
+    }
+    .sidebar-nav li {
+      list-style: none;
+      position: relative;
+    }
+    .sidebar-nav li > ul {
+      display: none;
+    }
+    .sidebar-nav li.active > ul {
+      display: block;
+    }
+    .sidebar-nav li.collapsible > a:before {
+      content: "▶";
+      font-size: 10px;
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s;
+    }
+    .sidebar-nav li.collapsible.active > a:before {
+      transform: translateY(-50%) rotate(90deg);
     }
   </style>
 </head>
 <body>
+  <!-- Docsify 挂载点 -->
   <div id="app"></div>
   <script>
+    // Docsify 配置对象
     window.$docsify = {
-      name: '我的在线笔记',
-      repo: '',
-      loadSidebar: true,
-      subMaxLevel: 3,
+      name: 'yeyeye的在线笔记', // 站点名称
+      repo: 'https://github.com/yeyeye0118/UMich_DLfCV',           // 关联仓库
+      loadSidebar: true,  // 启用侧边栏
+      subMaxLevel: 3,     // 侧边栏最大子级
       toc: {
-        tocMaxLevel: 3,
-        target: 'h1, h2, h3'
-      }
+        tocMaxLevel: 3,   // 目录最大级别
+        target: 'h1, h2, h3' // 目录目标标题
+      },
+      // 自定义插件：为有子菜单的 li 添加折叠功能
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            // 遍历所有侧边栏 li 元素
+            const items = document.querySelectorAll('.sidebar-nav li');
+            items.forEach(item => {
+              if (item.querySelector('ul')) {
+                // 有子菜单的 li 添加 collapsible 类
+                item.classList.add('collapsible');
+                const link = item.querySelector('a');
+                // 主链接点击时切换 active 状态，实现折叠/展开
+                link.addEventListener('click', function(e) {
+                  // 只响应主链接点击，防止子链接影响
+                  if (e.target === link) {
+                    e.preventDefault();
+                    item.classList.toggle('active');
+                  }
+                });
+              }
+            });
+          });
+        }
+      ]
     };
   </script>
+  <!-- Docsify 主库 -->
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <!-- 搜索插件 -->
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <!-- 数学公式插件 -->
   <script src="//unpkg.com/docsify/lib/plugins/math.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js"></script>
+  <!-- Twikoo 评论系统 -->
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.27/dist/twikoo.all.min.js"></script>
   <script>
+    // 初始化 Twikoo 评论
     twikoo.init({
-      envId: 'https://twikoo-你的用户名.vercel.app',
+      envId: 'https://twikoo-你的用户名.vercel.app', // 替换为你的 Twikoo 环境 ID
       el: '#tcomment',
       lang: 'zh-CN'
     });
