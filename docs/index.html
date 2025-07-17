@@ -1,111 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>My Notes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- 引入 Docsify Vue 主题样式 -->
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-
-  <!-- 引入 KaTeX 数学公式样式 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
-
-  <!-- 引入 Google 的 Noto Sans SC 字体，适合中文阅读 -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <title>我的在线阅读网站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Docsify Vue 主题 -->
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css" />
+  
+  <!-- KaTeX 数学公式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/docsify-katex@1.4.2/dist/docsify-katex.js"></script>
+  
+  <!-- 搜索插件 -->
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  
+  <!-- 自定义样式：去除目录下划线、高亮、箭头旋转 -->
   <style>
-    /* ===== 自定义侧边栏样式部分 ===== */
-    .sidebar {
-      font-family: "Noto Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
-      font-size: 17px;
-      line-height: 1.8;
-      padding: 8px;
-      color: #2c3e50;
-    }
-
-    .sidebar .app-name {
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    .sidebar-nav a {
+    /* 去除下划线 */
+    .sidebar ul li a {
       text-decoration: none !important;
     }
 
-    .sidebar-nav a:hover {
-      color: #42b983;
+    /* 悬停高亮颜色 */
+    .sidebar ul li a:hover {
+      color: #42b983 !important;
     }
 
-    .sidebar-nav li.active > a {
-      color: #42b983;
-      font-weight: bold;
+    /* 箭头图标样式 */
+    .app-sub-sidebar:before {
+      content: '';
     }
 
-    .sidebar-nav ul {
-      padding-left: 10px;
+    .sidebar ul li > a:before {
+      content: '▶';
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+      transition: transform 0.2s ease;
     }
 
-    .sidebar-nav li {
-      list-style: none;
-      position: relative;
+    .sidebar ul li.open > a:before {
+      transform: rotate(90deg);
     }
 
-    .sidebar-nav li > ul {
+    /* 防止箭头显示在二级菜单中 */
+    .sidebar ul li ul a:before {
+      content: '';
       display: none;
-    }
-
-    .sidebar-nav li.active > ul {
-      display: block;
-    }
-
-    .sidebar-nav li.collapsible > a:before {
-      content: ">";
-      font-size: 10px;
-      position: absolute;
-      left: -12px;
-      top: 50%;
-      transform: translateY(-50%);
-      transition: transform 0.2s;
-    }
-
-    .sidebar-nav li.collapsible.active > a:before {
-      transform: translateY(-50%) rotate(90deg);
     }
   </style>
 </head>
 <body>
-
-  <!-- Docsify 渲染挂载点 -->
-  <div id="app"></div>
+  <div id="app">正在加载文档，请稍候...</div>
 
   <script>
     window.$docsify = {
-      name: 'yeyeye的在线笔记',
+      name: '我的笔记',
       repo: 'https://github.com/yeyeye0118/UMich_DLfCV',
+
       loadSidebar: true,
       subMaxLevel: 3,
-      toc: {
-        tocMaxLevel: 3,
-        target: 'h1, h2, h3'
+      loadNavbar: false,
+
+      search: {
+        placeholder: '搜索',
+        noData: '找不到结果',
+        depth: 3
       },
-      markdown: {
-        smartypants: true
+
+      katex: {
+        // 启用 KaTeX 自动渲染
+        delimiters: 'dollars'
       }
-    };
+    }
   </script>
 
-  <!-- 引入 Docsify 本体 -->
+  <!-- Docsify 本体 -->
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-
-  <!-- 引入 KaTeX 数学公式渲染库 -->
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
-
-  <!-- 引入 Docsify 的数学插件 -->
-  <script src="//unpkg.com/docsify/lib/plugins/math.min.js"></script>
-
-  <!-- 搜索插件 -->
-  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-
 </body>
 </html>
