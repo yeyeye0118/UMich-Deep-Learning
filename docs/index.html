@@ -2,105 +2,83 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
+  <title>我的在线阅读网站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>在线阅读网站</title>
-
-  <!-- Docsify 样式（Vue 主题） -->
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-
-  <!-- KaTeX 数学公式支持 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script src="//cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/marked@4"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
-
+  
+  <!-- Docsify Vue 主题 -->
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css" />
+  
+  <!-- KaTeX 数学公式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/docsify-katex@1.4.2/dist/docsify-katex.js"></script>
+  
   <!-- 搜索插件 -->
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-
+  
+  <!-- 自定义样式：去除目录下划线、高亮、箭头旋转 -->
   <style>
-    /* 字体样式 */
-    .sidebar-nav {
-      font-size: 15px;
-      line-height: 1.8em;
-      padding-left: 8px;
-      color: #333;
-    }
-
-    .sidebar-nav > ul > li > a {
-      font-weight: bold;
-    }
-
     /* 去除下划线 */
-    .sidebar-nav a {
-      text-decoration: none;
+    .sidebar ul li a {
+      text-decoration: none !important;
     }
 
-    /* 鼠标悬停高亮 */
-    .sidebar-nav a:hover {
-      color: #42b983;
+    /* 悬停高亮颜色 */
+    .sidebar ul li a:hover {
+      color: #42b983 !important;
     }
 
-    /* 折叠箭头样式 */
-    .app-sub-sidebar > ul > li::before,
-    .sidebar-nav > ul > li > ul::before {
-      content: '>';
+    /* 箭头图标样式 */
+    .app-sub-sidebar:before {
+      content: '';
+    }
+
+    .sidebar ul li > a:before {
+      content: '▶';
       display: inline-block;
-      margin-right: 6px;
-      border-style: solid;
-      border-width: 4px 4px 0 0;
-      border-color: #999;
-      transform: rotate(45deg);
+      width: 1em;
+      margin-left: -1em;
       transition: transform 0.2s ease;
     }
 
-    .app-sub-sidebar > ul > li.open::before,
-    .sidebar-nav > ul > li.open > ul::before {
-      transform: rotate(135deg);
+    .sidebar ul li.open > a:before {
+      transform: rotate(90deg);
     }
 
-    /* 保证箭头垂直居中 */
-    .sidebar-nav ul li {
-      position: relative;
-    }
-
-    .sidebar-nav ul li::before {
-      position: absolute;
-      left: -1.2em;
-      top: 0.6em;
+    /* 防止箭头显示在二级菜单中 */
+    .sidebar ul li ul a:before {
+      content: '';
+      display: none;
     }
   </style>
 </head>
-
 <body>
-  <div id="app">加载中...</div>
+  <div id="app">正在加载文档，请稍候...</div>
 
   <script>
     window.$docsify = {
-      name: '我的笔记version_4.14',
-      repo: '',
+      name: '我的笔记version_4.15',
+      repo: 'https://github.com/yeyeye0118/UMich_DLfCV',
 
-      loadNavbar: true,
       loadSidebar: true,
-      subMaxLevel: 2,
-      sidebarDisplayLevel: 1,
+      subMaxLevel: 3,
+      loadNavbar: false,
 
       search: {
         placeholder: '搜索',
         noData: '找不到结果',
-        depth: 2
+        depth: 3
       },
 
       katex: {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ],
-        throwOnError: false
+        // 启用 KaTeX 自动渲染
+        delimiters: 'dollars'
       }
-    };
+    }
   </script>
 
-  <!-- Docsify 主程序 -->
+  <!-- Docsify 本体 -->
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 </body>
 </html>
