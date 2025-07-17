@@ -10,6 +10,10 @@
 
   <!-- 引入 KaTeX 数学公式样式和库，用于渲染 $$ 数学公式 $$ -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  <!-- 内容渲染挂载点 -->
+  <div id="app"></div>
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/math.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
 
   <!-- 引入 Google 的 Noto Sans SC 字体，适合中文阅读 -->
@@ -93,40 +97,44 @@
   <div id="app"></div>
 
   <script>
-    // Docsify 配置项
     window.$docsify = {
-      name: 'yeyeye的在线笔记', // 顶部标题名称
-      repo: 'https://github.com/yeyeye0118/UMich_DLfCV', // GitHub 仓库链接（可选）
-      loadSidebar: true,     // 启用 _sidebar.md 文件
-      subMaxLevel: 3,        // 侧边栏最多展示几级标题
-      toc: {
-        tocMaxLevel: 3,      // 页面内目录最多显示三级标题
-        target: 'h1, h2, h3' // 哪些标题会出现在目录中
-      },
-
-      // 插件：为有子目录的项添加可折叠功能
-      plugins: [
-        function(hook, vm) {
-          hook.doneEach(function() {
+    name: 'yeyeye的在线笔记',
+    repo: 'https://github.com/yeyeye0118/UMich_DLfCV',
+    loadSidebar: true,
+    subMaxLevel: 3,
+    toc: {
+      tocMaxLevel: 3,
+      target: 'h1, h2, h3'
+    },
+    plugins: [
+      function (hook, vm) {
+        hook.doneEach(function () {
+          setTimeout(() => {
             const items = document.querySelectorAll('.sidebar-nav li');
             items.forEach(item => {
-              if (item.querySelector('ul')) {
-                // 如果该项有子目录，就添加 collapsible 类
+              const subList = item.querySelector('ul');
+              const link = item.querySelector('a');
+
+              if (subList && link) {
                 item.classList.add('collapsible');
-                const link = item.querySelector('a');
-                // 点击主链接时展开或收起子目录
-                link.addEventListener('click', function(e) {
-                  if (e.target === link) {
-                    e.preventDefault(); // 防止跳转
-                    item.classList.toggle('active'); // 切换展开状态
-                  }
-                });
+
+                // 防止重复绑定事件
+                if (!link.dataset.bound) {
+                  link.dataset.bound = 'true';
+                  link.addEventListener('click', function (e) {
+                    if (e.target === link) {
+                      e.preventDefault();
+                      item.classList.toggle('active');
+                    }
+                  });
+                }
               }
             });
-          });
-        }
-      ]
-    };
+          }, 0); // 等待 DOM 渲染完成
+        });
+      }
+    ]
+  };
   </script>
 
   <!-- 引入 Docsify 主库 -->
@@ -140,7 +148,7 @@
 
 
 
-  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js"></script>
+  
 
   <!-- Twikoo 评论系统（可选，如果不使用评论功能可以移除） -->
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.27/dist/twikoo.all.min.js"></script>
