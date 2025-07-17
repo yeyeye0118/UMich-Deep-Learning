@@ -8,47 +8,74 @@
   
 
   <style>
-  /* 左侧边栏整体字体大小（你之前提到的） */
+  /* 整个侧边栏基础样式 */
   .sidebar {
-    font-size: 24px;
-    text-decoration: none !important; /* 移除下划线 */
-    color: inherit; /* 保持原色 */
-    transition: color 0.3s ease;
+    font-size: 16px;                  /* 设置基础字体大小 */
+    color: #333;                      /* 统一文字颜色为深灰色 */
+    background-color: #f9f9f9;        /* 设置侧边栏背景色为浅灰 */
   }
 
+  /* 顶部笔记标题样式（例如“yeyeye的在线笔记”） */
   .app-name {
-    font-size: 24px;
-    text-decoration: none !important; /* 移除下划线 */
-    color: inherit; /* 保持原色 */
-    transition: color 0.3s ease;
+    font-size: 22px;
+    font-weight: bold;               /* 加粗使其更醒目 */
+    color: #2c3e50;                  /* 深蓝灰色 */
+    margin-bottom: 10px;
+    text-align: center;              /* 居中对齐更美观 */
   }
 
+  /* 一级目录链接样式 */
   .sidebar-nav > ul > li > a {
-    font-size: 18px;
-    text-decoration: none !important; /* 移除下划线 */
-    color: inherit; /* 保持原色 */
-    transition: color 0.3s ease;
+    font-size: 17px;
+    font-weight: 500;
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 6px 12px;
+    display: block;
+    border-radius: 6px;              /* 增加圆角使块状更柔和 */
+    transition: background-color 0.3s, color 0.3s;
   }
 
+  /* 二级及以下目录链接样式 */
   .sidebar-nav ul ul li a {
-    font-size: 16px;
-    text-decoration: none !important;
-    color: inherit;
-    transition: color 0.3s ease;
+    font-size: 15px;
+    color: #555;
+    padding: 4px 20px;
+    display: block;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
   }
 
-  /* 鼠标悬停时的颜色变化：变成蓝色 */
+  /* 鼠标悬停时的高亮效果 */
   .sidebar-nav a:hover {
-    color: #007BFF; /* 你可以换成任何你喜欢的蓝色，例如 #1e90ff */
-    text-decoration: none; /* 确保无下划线 */
+    color: #007BFF;                  /* 蓝色字体 */
+    background-color: #e8f0ff;       /* 淡蓝背景 */
+    text-decoration: none;
   }
 
-  /* 当前正在浏览的页面链接样式 */
+  /* 当前激活页面的链接样式 */
   .sidebar-nav li.active > a {
     color: #007BFF;
     font-weight: bold;
+    background-color: #dbe9ff;       /* 更明显的蓝色背景 */
+  }
+
+  /* 可选：滚动条样式美化（兼容现代浏览器） */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f0f0f0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
   }
 </style>
+
 
 
 
