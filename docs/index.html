@@ -6,12 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   
+
+  <style>
+  /* 左侧边栏整体字体大小（你之前提到的） */
+  .sidebar {
+    font-size: 16px;
+  }
+
+  .app-name {
+    font-size: 22px;
+  }
+
+  .sidebar-nav > ul > li > a {
+    font-size: 18px;
+    text-decoration: none !important; /* 移除下划线 */
+    color: inherit; /* 保持原色 */
+    transition: color 0.3s ease;
+  }
+
+  .sidebar-nav ul ul li a {
+    font-size: 16px;
+    text-decoration: none !important;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+
+  /* 鼠标悬停时的颜色变化：变成蓝色 */
+  .sidebar-nav a:hover {
+    color: #007BFF; /* 你可以换成任何你喜欢的蓝色，例如 #1e90ff */
+    text-decoration: none; /* 确保无下划线 */
+  }
+
+  /* 当前正在浏览的页面链接样式 */
+  .sidebar-nav li.active > a {
+    color: #007BFF;
+    font-weight: bold;
+  }
+</style>
+
+
+
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '我的在线笔记',
+      name: 'yeyeye的在线笔记',
       repo: '',
       loadSidebar: true,
       subMaxLevel: 3,
