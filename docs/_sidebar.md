@@ -3,3 +3,5 @@
 
 * [**lecture2**](lecture2 )
 
+* [**lecture3**](lecture3)
+
