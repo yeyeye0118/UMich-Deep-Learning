@@ -104,17 +104,6 @@
         target: 'h1, h2, h3' // 哪些标题会出现在目录中
       },
 
-
-      
-      loadSidebar: true,
-      subMaxLevel: 2,
-      sidebarDisplayLevel: 1, // 默认展开的层级
-      sidebarCollapse: {
-        accordion: true, // 同一时间只展开一个父级
-        collapseDepth: 2 // 折叠层级控制（默认即可）
-       }
-
-        
       // 插件：为有子目录的项添加可折叠功能
       plugins: [
         function(hook, vm) {
@@ -142,13 +131,12 @@
 
   <!-- 引入 Docsify 主库 -->
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-  <script src="//unpkg.com/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
 
   <!-- 搜索插件（默认搜索 markdown 中的内容） -->
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 
-  <!-- 替代 math.min.js，使用支持 KaTeX 的插件 -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify-katex@1.0.3/dist/docsify-katex.min.js"></script>
+  <!-- 数学公式插件（与 KaTeX 一起使用） -->
+  <script src="//unpkg.com/docsify/lib/plugins/math.min.js"></script>
 
   <!-- Twikoo 评论系统（可选，如果不使用评论功能可以移除） -->
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.27/dist/twikoo.all.min.js"></script>
