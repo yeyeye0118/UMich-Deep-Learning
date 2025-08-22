@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <!-- Docsify Vue 主题 -->
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css" />
+  <link rel="stylesheet" href="https://unpkg.com/docsify@4.12.2/lib/themes/vue.css" />
   
   <!-- KaTeX 数学公式 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" />
@@ -14,71 +14,149 @@
   <script defer src="https://cdn.jsdelivr.net/npm/marked@4"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/docsify-katex@1.4.2/dist/docsify-katex.js"></script>
   
+  <!-- （可以保留，也可以去掉）docsify-sidebar-collapse 插件 -->
+  <script src="//unpkg.com/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+
   <!-- 搜索插件 -->
-  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://unpkg.com/docsify@4.12.2/lib/plugins/search.min.js"></script>
   
-  <!-- 自定义样式：去除目录下划线、高亮、箭头旋转 -->
+  <!-- ✅ Prism.js 代码高亮（Python + 通用语言支持） -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+  
+  <!-- 自定义样式 -->
   <style>
-    /* 去除下划线 */
+    /* 去除下划线 + 高亮 */
     .sidebar ul li a {
       text-decoration: none !important;
+      color: #364149;
+      display: block;
+      padding: 6px 15px;
+      transition: all 0.3s ease;
     }
-
-    /* 悬停高亮颜色 */
     .sidebar ul li a:hover {
       color: #42b983 !important;
+      background-color: rgba(66, 185, 131, 0.1);
     }
 
-    /* 箭头图标样式 */
-    .app-sub-sidebar:before {
-      content: '';
+    /* 默认收起子菜单 */
+    .sidebar-nav li ul {
+      display: none;
+      margin-left: 15px;
+      border-left: 1px solid #eaecef;
+      padding-left: 10px;
+    }
+    /* active 时展开 */
+    .sidebar-nav li.active > ul {
+      display: block;
     }
 
-    .sidebar ul li > a:before {
-      content: '▶';
+    /* 箭头样式 */
+    .sidebar-nav li > a::before {
+      content: "▶";
       display: inline-block;
       width: 1em;
-      margin-left: -1em;
-      transition: transform 0.2s ease;
+      margin-right: 6px;
+      font-size: 10px;
+      transition: transform 0.3s ease;
+      color: #97adbd;
     }
-
-    .sidebar ul li.open > a:before {
+    .sidebar-nav li.active > a::before {
       transform: rotate(90deg);
     }
 
-    /* 防止箭头显示在二级菜单中 */
-    .sidebar ul li ul a:before {
-      content: '';
-      display: none;
+    /* 三级菜单去掉箭头 */
+    .sidebar-nav ul ul ul li > a::before {
+      display: none !important;
+    }
+
+    /* 主内容 */
+    #app {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #31465c;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 2.2em;
+      border-bottom: 1px solid #eaecef;
+      padding-bottom: 0.3em;
+    }
+    h2 {
+      font-size: 1.8em;
+      border-bottom: 1px solid #eaecef;
+      padding-bottom: 0.3em;
+    }
+    h3 {
+      font-size: 1.2em;
     }
   </style>
 </head>
 <body>
-  <div id="app">正在加载文档，请稍候...</div>
-
+  <div id="app">
+    <main>
+      <h1 id="欢迎来到我的笔记">欢迎来到我的笔记</h1>
+      <p>这是一个基于Docsify构建的在线阅读网站，用于记录和分享学习笔记。</p>
+      <h2 id="功能特点">功能特点</h2>
+      <ul>
+        <li>侧边栏导航（带展开/收起箭头）</li>
+        <li>数学公式支持（KaTeX）</li>
+        <li>全文搜索功能</li>
+        <li>响应式设计</li>
+        <li>✅ Python 代码高亮</li>
+      </ul>
+      <h2 id="数学公式示例">数学公式示例</h2>
+      <p>行内公式：$E = mc^2$</p>
+      <p>块级公式：</p>
+      <p>$$\frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} = 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}} {1+\frac{e^{-8\pi}} {1+\cdots} } } }$$</p>
+      <h2 id="代码示例">代码示例</h2>
+      <pre><code class="language-python">def hello_world():
+    print("Hello, World!")
+    return True</code></pre>
+    </main>
+  </div>
+  
   <script>
     window.$docsify = {
-      name: '我的笔记version_4.16',
+      name: '我的笔记 version_4.16',
       repo: 'https://github.com/yeyeye0118/UMich_DLfCV',
-
       loadSidebar: true,
       subMaxLevel: 3,
-      loadNavbar: false,
-
       search: {
         placeholder: '搜索',
         noData: '找不到结果',
         depth: 3
       },
-
-      katex: {
-        // 启用 KaTeX 自动渲染
-        delimiters: 'dollars'
-      }
+      katex: { delimiters: 'dollars' }
     }
   </script>
-
+  
   <!-- Docsify 本体 -->
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="https://unpkg.com/docsify@4.12.2/lib/docsify.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-python.min.js"></script>
+  <!-- 🔑 自定义点击折叠逻辑 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sidebar = document.querySelector('.sidebar');
+      if (!sidebar) return;
+
+      sidebar.addEventListener('click', function (e) {
+        if (e.target.tagName.toLowerCase() === 'a') {
+          const li = e.target.parentElement;
+          if (li.querySelector('ul')) {
+            e.preventDefault();
+            li.classList.toggle('active'); // ← 支持展开和收起
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>

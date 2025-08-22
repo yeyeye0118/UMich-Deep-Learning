@@ -8,7 +8,7 @@
 
 课程链接：[EECS 498-007 / 598-005：用于计算机视觉的深度学习 |UMich EECS 课程网站](https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/)
 
-课程时间表（笔记&作业发布）：[Schedule | EECS 498-007 / 598-005: Deep Learning for Computer Vision](https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2019/schedule.html)
+课程时间表（笔记&作业发布）：[Schedule | EECS 498-007 / 598-005: Deep Learning for Computer Vision](https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/schedule.html)
 
 课程视频：[Deep Learning for Computer Vision - YouTube](https://www.youtube.com/playlist?list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r)
 
