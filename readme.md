@@ -4,7 +4,7 @@
 
 我的学习笔记：https://yeyeye0118.github.io/UMich_DLfCV/
 
-@Frankly6的博客参考：[EECS498 笔记 - frankly6](https://frankly6.cn/2025/03/27/EECS498-notes/#more)
+@Frankly6的笔记参考：[EECS498 笔记 - frankly6](https://frankly6.cn/2025/03/27/EECS498-notes/#more)
 
 课程链接：[EECS 498-007 / 598-005：用于计算机视觉的深度学习 |UMich EECS 课程网站](https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/)
 
@@ -15,3 +15,7 @@
 @Frankly6的作业参考：[frankly6/eecs498-19fa-notes-and-assignments](https://github.com/frankly6/eecs498-19fa-notes-and-assignments)
 
 @linxiaow的作业参考：[linxiaow/EECS498-Deep-Learning-for-Vision](https://github.com/linxiaow/EECS498-Deep-Learning-for-Vision/tree/master)
+
+-----------------------
+**Assingment1:** pytorch练习，KNN实现                           
+**Assingment2:** Linear Classifiers(SVM 和 Softmax)，两层神经网络，手写识别挑战
