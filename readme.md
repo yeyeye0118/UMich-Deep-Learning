@@ -2,7 +2,7 @@
 
 **EECS 498-007 / 598-005: Deep Learning for Computer Vision**
 
-我的学习笔记：https://yeyeye0118.github.io/UMich_DLfCV/
+我的学习笔记：[https://yeyeye0118.github.io/UMich_DLfCV/](https://yeyeye0118.github.io/UMich-Deep-Learning/)
 
 @Frankly6的笔记参考：[EECS498 笔记 - frankly6](https://frankly6.cn/2025/03/27/EECS498-notes/#more)
 
