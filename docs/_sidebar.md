@@ -4,4 +4,4 @@
 * [**linear Classify**](lecture3)
 * [**Gradient Descent**](lecture4)
 * [**Neural Networks**](lecture5)
-
+* [**A2**](A2)

@@ -179,7 +179,7 @@ def L(X, y, W):
 
 ###  实践经验
 
-* $\Delta$ 总是可以取1.0，关键在于$\lambda $ 
+* $\Delta$ 总是可以取1.0，关键在于$\lambda$ 
 
 ![image-20250717124616374](lecture3.assets/image-20250717124616374.png)
 
@@ -246,7 +246,7 @@ p = np.exp(f) / np.sum(np.exp(f)) # safe to do, gives the correct answer
 
 ![image-20250717133315112](lecture3.assets/image-20250717133315112.png)
 
-* SVM的hinge function（他的data loss）关键在于阈值$\Delta $ 超出阈值则不再关心，data loss = 0
+* SVM的hinge function（他的data loss）关键在于阈值$\Delta$ 超出阈值则不再关心，data loss = 0
 
 而 softmax会一直迭代希望趋于理想情况
 
